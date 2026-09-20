@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>محادثة خاصة</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- شاشة تسجيل الدخول -->
+  <section id="login-screen" class="screen">
+    <form id="login-form" class="card" autocomplete="on">
+      <h1>🔒 محادثة خاصة</h1>
+      <p class="hint">Private Chat</p>
+
+      <label for="username">اسم المستخدم / Username</label>
+      <input id="username" name="username" type="text" autocomplete="username"
+             autocapitalize="none" autocorrect="off" spellcheck="false"
+             maxlength="64" required>
+
+      <label for="password">كلمة المرور / Password</label>
+      <input id="password" name="password" type="password"
+             autocomplete="current-password" maxlength="128" required>
+
+      <p id="login-error" class="error" role="alert"></p>
+
+      <button type="submit" id="login-btn">دخول / Login</button>
+    </form>
+  </section>
+
+  <!-- شاشة المحادثة -->
+  <section id="chat-screen" class="screen hidden">
+    <header class="chat-header">
+      <div>
+        <strong id="header-user"></strong>
+        <small id="status">...</small>
+      </div>
+      <button type="button" id="logout-btn" class="link-btn">خروج / Logout</button>
+    </header>
+
+    <p class="notice">الرسائل تُحذف تلقائياً بعد 30 دقيقة · Messages auto-delete after 30 minutes</p>
+
+    <main id="messages" class="messages" aria-live="polite"></main>
+
+    <form id="message-form" class="composer" autocomplete="off">
+      <input id="message-input" type="text" dir="auto" maxlength="1000"
+             placeholder="اكتب رسالة... / Type a message..." autocomplete="off" required>
+      <button type="submit" id="send-btn" aria-label="إرسال">➤</button>
+    </form>
+  </section>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
